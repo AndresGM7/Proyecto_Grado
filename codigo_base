@@ -1,0 +1,481 @@
+##Descriptivos: Poblacional, agregados y deuda
+
+#Librerias
+import pandas as pd
+from pandas import read_csv 
+
+import plotly.graph_objects as gp
+import plotly.offline
+from plotly.offline import iplot
+
+import numpy as np
+import random as rd
+import matplotlib.pyplot as plt
+import seaborn as sns
+#Fuentes Graficos
+"https://www.geeksforgeeks.org/how-to-create-a-population-pyramid-using-plotly-in-python/"
+
+#Graficos
+y_age=pop_vsuk['rango']
+x_col=pop_vsuk['Colombia_2022']
+x_uk=pop_vsuk['UK_2022']*-1
+
+fig1 = gp.Figure()
+
+#Agregar datos de colombia 
+fig1.add_trace(gp.Bar(y=y_age, x=x_col, name='Colombia', orientation='h'))
+#Agregar datos de Otro País: UK
+fig1.add_trace(gp.Bar(y=y_age, x=x_uk, name='United Kingdom', orientation='h'))
+
+#Agregar el titulo a la grafica
+fig1.update_layout(title='Piramide Poblacional Comparativa - 2022',
+                  title_font_size=12,barmode='relative', bargap=0.0, bargroupgap=0, xaxis=dict(tickvals=[-7000000,-5000000,-2000000,0,2000000,5000000,7000000],
+                                                        ticktext=['7M','5M','2M','0','2M','5M','7M'],
+                                                        title='Población en Millones',
+                                                        title_font_size=14)
+                  )
+
+fig1.show()
+
+y2_age=pop_vsusa['rango']
+x2_col=pop_vsusa['Colombia_2022']
+x2_usa=pop_vsusa['eeuu_2022']*-1
+
+fig2 = gp.Figure()
+
+#Agregar datos de colombia 
+fig2.add_trace(gp.Bar(y=y2_age, x=x2_col, name='Colombia', orientation='h'))
+#Agregar datos de Otro País: USA
+fig2.add_trace(gp.Bar(y=y2_age, x=x2_usa, name='USA', orientation='h'))
+
+#Agregar el titulo a la grafica
+fig2.update_layout(title='Piramide Poblacional Comparativa - 2022',
+                  title_font_size=12,barmode='relative', bargap=0.0, bargroupgap=0, xaxis=dict(tickvals=[-7000000,-5000000,-2000000,0,2000000,5000000,7000000],
+                                                        ticktext=['7M','5M','2M','0','2M','5M','7M'],
+                                                        title='Población en Millones',
+                                                        title_font_size=14)
+                  )
+
+fig2.show()
+
+
+y3_age=pop_vsesp['rango']
+x3_col=pop_vsesp['Colombia_2022']
+x3_esp=pop_vsesp['España_2022']*-1
+
+fig3 = gp.Figure()
+
+#Agregar datos de colombia 
+fig3.add_trace(gp.Bar(y=y3_age, x=x3_col, name='Colombia', orientation='h'))
+#Agregar datos de Otro País: USA
+fig3.add_trace(gp.Bar(y=y3_age, x=x3_esp, name='España', orientation='h'))
+
+#Agregar el titulo a la grafica
+fig3.update_layout(title='Piramide Poblacional Comparativa - 2022',
+                  title_font_size=12,barmode='relative', bargap=0.0, bargroupgap=0, xaxis=dict(tickvals=[-7000000,-5000000,-2000000,0,2000000,5000000,7000000],
+                                                        ticktext=['7M','5M','2M','0','2M','5M','7M'],
+                                                        title='Población en Millones',
+                                                        title_font_size=14)
+                  )
+
+fig3.show()
+
+
+y4_age=pop_vschina['rango']
+x4_col=pop_vschina['Colombia_2022']
+x4_china=pop_vschina['China_2022']*-1
+
+fig4 = gp.Figure()
+
+#Agregar datos de colombia 
+fig4.add_trace(gp.Bar(y=y4_age, x=x4_col, name='Colombia', orientation='h'))
+#Agregar datos de Otro País: USA
+fig4.add_trace(gp.Bar(y=y4_age, x=x4_china, name='China', orientation='h'))
+
+#Agregar el titulo a la grafica
+fig4.update_layout(title='Piramide Poblacional Comparativa - 2022',
+                  title_font_size=12,barmode='relative', bargap=0.0, bargroupgap=0, xaxis=dict(tickvals=[-7000000,-5000000,-2000000,0,2000000,5000000,7000000],
+                                                        ticktext=['7M','5M','2M','0','2M','5M','7M'],
+                                                        title='Población en Millones',
+                                                        title_font_size=14)
+                  )
+
+fig4.show()
+
+
+y5_age=pop_vsbrasil['rango']
+x5_col=pop_vsbrasil['Colombia_2022']
+x5_brasil=pop_vsbrasil['Brasil_2022']*-1
+
+fig5 = gp.Figure()
+
+#Agregar datos de colombia 
+fig5.add_trace(gp.Bar(y=y5_age, x=x5_col, name='Colombia', orientation='h'))
+#Agregar datos de Otro País: USA
+fig5.add_trace(gp.Bar(y=y5_age, x=x5_brasil, name='Brasil', orientation='h'))
+
+#Agregar el titulo a la grafica
+fig5.update_layout(title='Piramide Poblacional Comparativa - 2022',
+                  title_font_size=12,barmode='relative', bargap=0.0, bargroupgap=0, xaxis=dict(tickvals=[-7000000,-5000000,-2000000,0,2000000,5000000,7000000],
+                                                        ticktext=['7M','5M','2M','0','2M','5M','7M'],
+                                                        title='Población en Millones',
+                                                        title_font_size=14)
+                  )
+
+fig5.show()
+
+
+# Grafico de simetría poblacional
+fig_mult=plt.figure()
+plt.subplot(2,2,1)
+plt.plot(x_col,x_uk*-1)
+plt.subplot(2,2,2)
+plt.plot(x_col,x2_usa*-1)
+plt.subplot(2,2,3)
+plt.plot(x_col,x3_esp*-1)
+plt.subplot(2,2,4)
+plt.plot(x_col,x4_china*-1)
+
+
+sns.pairplot(pop_totales,corner="YES", hue="año")
+
+sns.pairplot(pop_agsmlv,corner="YES", hue="Año")
+
+plt.figure(figsize=(12,9))
+s = sns.heatmap(Dataframe3.corr(),
+               annot= True,
+               cmap= 'RdBu',
+               vmin=-1,
+               vmax=1)
+s.set_yticklabels(s.get_yticklabels(), rotation = 0, fontsize =12)
+s.set_xticklabels(s.get_xticklabels(), rotation=90, fontsize=12)
+plt.title("Correllation heatmap")
+plt.show()
+
+
+##Descriptivo Agregados
+
+
+PIBNC[['Quarter','consumo_n','gasto_n']].groupby('Quarter').describe()
+
+PIBN.describe()
+
+PIBN.groupby('Quarter').describe()
+
+PIBN1.groupby('Quarter').describe()
+
+sns.pairplot(PIBNC,corner="YES", hue="Quarter")
+
+sns.pairplot(PIBN,corner="YES", hue="Quarter")
+
+plt.figure(figsize=(12,9))
+s = sns.heatmap(PIBNC.corr(),
+               annot= True,
+               cmap= 'RdBu',
+               vmin=-1,
+               vmax=1)
+s.set_yticklabels(s.get_yticklabels(), rotation = 0, fontsize =12)
+s.set_xticklabels(s.get_xticklabels(), rotation=90, fontsize=12)
+plt.title("Correllation heatmap")
+plt.show()
+
+
+## Descriptivo deuda
+
+dfm_debtusura.columns
+
+tasas_tes.describe()
+
+depositos.describe()
+
+dfm_debt.groupby('month').describe()
+
+sns.pairplot(depositos, corner="yes")
+
+sns.pairplot(dfm_debt, corner="yes")
+
+sns.pairplot(dfm_debtusura, corner="yes")
+
+sns.pairplot(dfm_debt, hue="year", corner="yes")
+
+sns.pairplot(tasas_tes, hue="month", corner="yes")
+
+plt.figure(figsize=(12,9))
+s = sns.heatmap(dfm_debtusura.corr(),
+               annot= True,
+               cmap= 'RdBu',
+               vmin=-1,
+               vmax=1)
+s.set_yticklabels(s.get_yticklabels(), rotation = 0, fontsize =12)
+s.set_xticklabels(s.get_xticklabels(), rotation=90, fontsize=12)
+plt.title("Correllation heatmap")
+plt.show()
+
+plt.figure(figsize=(12,9))
+s = sns.heatmap(dfm_debt.corr(),
+               annot= True,
+               cmap= 'RdBu',
+               vmin=-1,
+               vmax=1)
+s.set_yticklabels(s.get_yticklabels(), rotation = 0, fontsize =12)
+s.set_xticklabels(s.get_xticklabels(), rotation=90, fontsize=12)
+plt.title("Correllation heatmap")
+plt.show()
+
+plt.figure(figsize=(12,9))
+s = sns.heatmap(depositos.corr(),
+               annot= True,
+               cmap= 'RdBu',
+               vmin=-1,
+               vmax=1)
+s.set_yticklabels(s.get_yticklabels(), rotation = 0, fontsize =12)
+s.set_xticklabels(s.get_xticklabels(), rotation=90, fontsize=12)
+plt.title("Correllation heatmap")
+plt.show()
+
+##Descriptivo produccion privada
+
+dfemp_cont.groupby('sector').describe()
+
+dfemp_ratios.groupby('sector').describe()
+
+sns.pairplot(dfemp_cont, corner="yes", hue="sector")
+
+sns.pairplot(dfemp_ratios, corner="yes", hue="subsector")
+
+plt.figure(figsize=(12,9))
+s = sns.heatmap(dfemp_cont.corr(),
+               annot= True,
+               cmap= 'RdBu',
+               vmin=-1,
+               vmax=1)
+s.set_yticklabels(s.get_yticklabels(), rotation = 0, fontsize =12)
+s.set_xticklabels(s.get_xticklabels(), rotation=90, fontsize=12)
+plt.title("Correllation heatmap")
+plt.show()
+
+plt.figure(figsize=(12,9))
+s = sns.heatmap(dfemp_ratios.corr(),
+               annot= True,
+               cmap= 'RdBu',
+               vmin=-1,
+               vmax=1)
+s.set_yticklabels(s.get_yticklabels(), rotation = 0, fontsize =12)
+s.set_xticklabels(s.get_xticklabels(), rotation=90, fontsize=12)
+plt.title("Correllation heatmap")
+plt.show()
+
+##Frontera de posibilidades de produccion
+
+
+import plotly.express as px
+import plotly.graph_objects as go
+
+
+time=tasas_tes.date
+rates=tasas_tes[['tes_1year', 'tes_5year', 'tes_10year']]
+xlabel('time ')
+ylabel('risk-free rate (%)')
+plot(time,rates)
+show()
+
+fig2=px.scatter(tasas_tes, x='date', y='tes_10year',
+              color='month')
+fig2.show()
+
+fig = px.scatter(PIBNC, x='consumo_n', y='inversion_n',
+              color='key')
+fig.show()
+
+sns.pairplot(PIBNC,corner = True, kind = 'reg', hue='Quarter')
+
+
+fig1 = px.scatter_3d(PIBNC, x='consumo_n', y='gasto_n', z='inversion_n', title="Frontera Posibilidades Produccion", color="Year")
+fig1.show()
+
+##Valoracion macro y amortizacion
+
+dfm_debtusura.groupby('year').describe()
+
+df_tes35.groupby('plazo').describe()
+
+df_tes520.groupby('month').describe()
+
+df_tes35.groupby("plazo").describe()
+
+##Transformaciones
+#Ratios
+df_agro=df_empr[(df_empr['sector']=='agropecuario')]
+df_edu=df_empr[(df_empr['sector']=='educacion')]
+df_veh=df_empr[(df_empr['sector']=='concesionarios')&(df_empr['sector']=='partes_vehiculos')&(df_empr['sector']=='vehiculos')]
+df_viv=df_empr[(df_empr['sector']=='construccion')]
+#Balances
+dfb_agro=df_empb[(df_empb['sector']=='agropecuario')]
+dfb_edu=df_empb[(df_empb['sector']=='educacion')]
+dfb_veh=df_empb[(df_empb['sector']=='concesionarios')&(df_empb['sector']=='partes_vehiculos')&(df_empb['sector']=='vehiculos')]
+dfb_viv=df_empb[(df_empb['sector']=='construccion')]
+
+##Definicion de funciones
+#Empresarial, constantes
+p_dep=df_anual.Dependientes
+p_ed=df_anual.Educandos
+p_em=df_anual.Emprendedores
+p_emp=df_anual.Empresarios
+p_ret=df_anual.Retirados
+sal=df_anual.smlv_mensual
+pr_dep=df_anual.prop_dep
+pr_edu=df_anual.prop_edu
+pr_emp=df_anual.prop_empd
+pr_emps=df_anual.prop_emps
+pr_ret=df_anual.prop_rets
+desm=df_anual.desempleo
+c=df_anual.Consumo
+i=df_anual.Inversion
+g=df_anual.Gasto
+
+wflorin=df_anual.wemp_mensual
+
+
+#Sectoriales
+k_alim=dfb_agro.total_pat21
+k_edu=dfb_edu.total_pat21
+k_veh=dfb_veh.total_pat21
+k_viv=dfb_viv.total_pat21
+
+ing_alim=dfb_agro.ing_op21
+ing_edu=dfb_edu.ing_op21
+ing_veh=dfb_veh.ing_op21
+ing_viv=dfb_viv.ing_op21
+
+roe_alim=df_agro.retorno_pat
+roe_edu=df_edu.retorno_pat
+roe_veh=df_veh.retorno_pat
+roe_viv=df_viv.retorno_pat
+
+#costo anual emprendedor a florin de entre 1200 y 1400
+wflorin=5.6263 
+
+#Macrofuncion empresarial
+def fem(wm):
+    return -3*((p_dep)*wm)*(pr_dep*(c))-2*((p_ed)*wm)*(pr_edu*(c))+((p_em)*wm*(1-desm/100))*(pr_emp*(i))+((p_emp)*(1-desm/100)*wm)*(pr_emps*(i))-(p_ret)*wm*(pr_ret*(c))-(g)
+
+#Funcion Empresarial
+def fe(w):
+    return -3*sum(p_dep)*w-2*sum(p_ed)*w+sum(p_em)*w*(1-desm/100)+sum(p_emp)*(1-desm/100)*w-sum(p_ret)*w
+
+
+#CES function Q=F((a)K*exp(r)+(1-a)L*exp(r))*exp(1/r)
+
+def Qts(x,r,p):
+    return ((p*df_empb.total_pat21)**r+((1-p)*x)**r)**(1/r)
+
+#Transformacion tasas de interes
+
+def tsem(ratea):
+    return (1+rate/100)**(1/(12*4))-1
+def tmen(rateea):
+    return (1+rateea/100)**(1/(12))-1
+def ttrim(rate):
+    return (1+rate/100)**(1/(4))-1
+    
+df_empr.groupby('sector').describe()
+
+##Amortizacion de deuda publica
+#Duraciones (escenarios) y Deuda
+T=35 #20
+Deuda=(df_anual['Gasto'][17])
+interes=7.5/100
+years=35
+cuota=npf.pmt(rate=interes,nper=years,pv=-Deuda)
+
+#Tabla Amortizaciones
+tabla_deudap=np.zeros((35,6))
+tabla_deudap=pd.DataFrame(tabla_deudap)
+tabla_deudap.columns=['periodo','saldo_inicial','pago','intereses','principal','saldo_final']
+#primera fila
+tabla_deudap.iloc[0,0]=1
+tabla_deudap.iloc[0,1]=Deuda
+tabla_deudap.iloc[0,2]=cuota
+tabla_deudap.iloc[0,3]=Deuda*interes
+tabla_deudap.iloc[0,4]=cuota-(Deuda*interes)
+tabla_deudap.iloc[0,5]=Deuda-(cuota-(Deuda*interes))
+#Bucle para rellenar
+for i in range(1,35):
+    tabla_deudap.iloc[i,0]=i+1
+    tabla_deudap.iloc[i,1]=tabla_deudap.iloc[(i-1),5]
+    tabla_deudap.iloc[i,2]=cuota
+    tabla_deudap.iloc[i,3]=tabla_deudap.iloc[i,1]*interes
+    tabla_deudap.iloc[i,4]=cuota-(tabla_deudap.iloc[i,1]*interes)
+    tabla_deudap.iloc[i,5]=tabla_deudap.iloc[i,1]-(cuota-(tabla_deudap.iloc[i,1]*interes))
+    
+print(tabla_deudap.round(2))
+
+#VPN y TIR
+flujos=[-(np.max(df_anual['Gasto'])+np.max(df_anual['Inversion'])),(df_anual['Consumo'][0]),(df_anual['Consumo'][1]),(df_anual['Consumo'][2]),
+       (df_anual['Consumo'][3]),(df_anual['Consumo'][4]),(df_anual['Consumo'][5]),(df_anual['Consumo'][6]),(df_anual['Consumo'][7]),
+       (df_anual['Consumo'][8]),(df_anual['Consumo'][9]),(df_anual['Consumo'][9]),(df_anual['Consumo'][10]),(df_anual['Consumo'][11]),
+       (df_anual['Consumo'][12]),(df_anual['Consumo'][13]),(df_anual['Consumo'][14]),(df_anual['Consumo'][15]),(df_anual['Consumo'][16]),
+       (df_anual['Consumo'][17])]
+       
+
+#VPN y TIR
+flujos2=[-((df_anual['prop_cautivos'][0]*df_anual['Gasto'][0])+(df_anual['prop_activos'][0])*(df_anual['Inversion'][0])),         
+         (df_anual['prop_cautivos'][1]*df_anual['Consumo'][1]),(df_anual['prop_cautivos'][2]*df_anual['Consumo'][2]),
+         (df_anual['prop_cautivos'][3]*df_anual['Consumo'][3]),(df_anual['prop_cautivos'][4]*df_anual['Consumo'][4]),
+         (df_anual['prop_cautivos'][5]*df_anual['Consumo'][5]),(df_anual['prop_cautivos'][6]*df_anual['Consumo'][6]),
+         (df_anual['prop_cautivos'][7]*df_anual['Consumo'][7]),(df_anual['prop_cautivos'][8]*df_anual['Consumo'][8]),
+         (df_anual['prop_cautivos'][9]*df_anual['Consumo'][9]),(df_anual['prop_cautivos'][10]*df_anual['Consumo'][10]),
+         (df_anual['prop_cautivos'][11]*df_anual['Consumo'][11]),(df_anual['prop_cautivos'][12]*df_anual['Consumo'][12]),
+         (df_anual['prop_cautivos'][13]*df_anual['Consumo'][13]),(df_anual['prop_cautivos'][14]*df_anual['Consumo'][14]),
+         (df_anual['prop_cautivos'][15]*df_anual['Consumo'][15]),(df_anual['prop_cautivos'][16]*df_anual['Consumo'][16]),
+         (df_anual['prop_cautivos'][17]*df_anual['Consumo'][17])]
+         
+         
+flujos3=[-((df_anual['Gasto'][0])+(df_anual['Inversion'][0])),(df_anual['Consumo'][0]),(df_anual['Consumo'][1]),(df_anual['Consumo'][2]),
+       (df_anual['Consumo'][3]),(df_anual['Consumo'][4]),(df_anual['Consumo'][5]),(df_anual['Consumo'][6]),(df_anual['Consumo'][7]),
+       (df_anual['Consumo'][8]),(df_anual['Consumo'][9]),(df_anual['Consumo'][9]),(df_anual['Consumo'][10]),(df_anual['Consumo'][11]),
+       (df_anual['Consumo'][12]),(df_anual['Consumo'][13]),(df_anual['Consumo'][14]),(df_anual['Consumo'][15]),(df_anual['Consumo'][16]),
+       (df_anual['Consumo'][17])]
+       
+#TIR de flujos a maximo gasto e inversion 
+rate1=[]
+npv1=[]
+
+for i in range(1,100):
+    rate1.append(0.05*i)
+    npv1.append(npf.npv(0.05*i,flujos))
+plot(rate1,npv1)
+show()
+
+print((np.max(dfm_debtusura['usura_microcredito']/100)-npf.irr(flujos)))
+
+npf.irr(flujos)
+
+#TIR de flujos gasto e inversion ponderados por poblacion
+
+rate=[]
+npv=[]
+
+for i in range(1,70):
+    rate.append(0.05*i)
+    npv.append(npf.npv(0.05*i,flujos2))
+plot(rate,npv)
+show()
+
+print((np.max(dfm_debtusura['usura_microcredito']/100)-npf.irr(flujos2)))
+
+npf.irr(flujos2)
+
+#TIR de flujos a gasto e inversion de inicios de 2022
+rate=[]
+npv=[]
+
+for i in range(1,70):
+    rate.append(0.05*i)
+    npv.append(npf.npv(0.05*i,flujos3))
+plot(rate,npv)
+show()
+
+print((np.max(dfm_debtusura['usura_microcredito']/100)-npf.irr(flujos3)))
+
+npf.irr(flujos3)
